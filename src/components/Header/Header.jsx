@@ -4,7 +4,7 @@ import MicIcon from '@material-ui/icons/Mic';
 import { SpeechConfig, AudioConfig, SpeechRecognizer, ResultReason } from 'microsoft-cognitiveservices-speech-sdk'
 import './Header.css'
 
-const Header = ({ language, setLanguage, text, setText, lightMode }) => {
+const Header = ({ language, setText, lightMode }) => {
     const darkTheme = createTheme({
         palette: {
             primary: {
@@ -45,7 +45,6 @@ const Header = ({ language, setLanguage, text, setText, lightMode }) => {
                     </h1>
                 </ThemeProvider>
             </div>
-            <p className="title">{text ? text : ""}</p>
         </div>
     )
 }

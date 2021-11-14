@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import './App.css';
 import { Container, Switch, withStyles } from '@material-ui/core'
-import Header from './components/Header/Header';
 import { grey } from '@material-ui/core/colors';
+
+import Header from './components/Header/Header';
+import Analytics from './components/Analytics/Analytics'
 
 
 function App() {
@@ -28,7 +30,6 @@ function App() {
     <div
       className="App"
       style={{
-        height: "100vh",
         backgroundColor: lightMode ? "#fff" : "#282c34",
         color: lightMode ? "#000" : "#fff",
         transition: "all 0.5s linear"
@@ -43,10 +44,10 @@ function App() {
           <ThemeSwitch checked={lightMode} onChange={() => setLightMode(!lightMode)} />
         </div>
         <Header
-          language={language} setLanguage={setLanguage}
-          text={text} setText={setText}
+          language={language}
           lightMode={lightMode}
         />
+        <Analytics text={text} lightMode={lightMode} />
       </Container>
     </div >
   );
