@@ -45,6 +45,7 @@ function App() {
         </div>
         <Header
           language={language}
+          setText={setText}
           lightMode={lightMode}
         />
         <Analytics text={text} lightMode={lightMode} />
