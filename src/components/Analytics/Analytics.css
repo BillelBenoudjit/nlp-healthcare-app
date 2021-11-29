@@ -25,3 +25,11 @@
         overflow-y: scroll;
     }
 }
+
+.YourHighlightClass {
+    background-color: rgb(105, 105, 105)
+}
+
+.ActiveHighlightClass {
+    background-color:yellow
+}
