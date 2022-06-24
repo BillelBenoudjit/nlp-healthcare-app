@@ -153,22 +153,26 @@ const Analytics = ({ text, lightMode }) => {
                         <h3 className="select">
                             Key phrases Extraction
                         </h3>
-                        <div
-                            className="singleMean"
-                            style={{
-                                backgroundColor: lightMode ? "#3B5360" : "#fff",
-                                color: lightMode ? "#fff" : "#000",
-                            }}
-                        >
-                            {
-                                data.map((word) => {
-                                    return (
-                                        <li styles={{ fontWeight: 'bold' }}>{word}</li>
-                                    )
-                                })
-                            }
-                            <hr style={{ backgroundColor: "black", width: "100%" }} />
-                        </div>
+                        {data.length == 0 ?
+                            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                            :
+                            <div
+                                className="singleMean"
+                                style={{
+                                    backgroundColor: lightMode ? "#3B5360" : "#fff",
+                                    color: lightMode ? "#fff" : "#000",
+                                }}
+                            >
+                                {
+                                    data.map((word) => {
+                                        return (
+                                            <li styles={{ fontWeight: 'bold' }}>{word}</li>
+                                        )
+                                    })
+                                }
+                                <hr style={{ backgroundColor: "black", width: "100%" }} />
+                            </div>
+                        }
                     </>
                     : <br></br>
                 }
