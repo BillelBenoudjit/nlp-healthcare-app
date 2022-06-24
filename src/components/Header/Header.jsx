@@ -1,10 +1,12 @@
 import { createTheme, ThemeProvider } from '@material-ui/core'
 import React from 'react'
 import MicIcon from '@material-ui/icons/Mic';
+import Grid from '@mui/material/Grid'
+import Input from '@mui/material/Input';
 import { SpeechConfig, AudioConfig, SpeechRecognizer, ResultReason } from 'microsoft-cognitiveservices-speech-sdk'
 import './Header.css'
 
-const Header = ({ language, setText, lightMode }) => {
+const Header = ({ language, setText, text, lightMode }) => {
     const darkTheme = createTheme({
         palette: {
             primary: {
@@ -35,14 +37,33 @@ const Header = ({ language, setText, lightMode }) => {
         });
     }
 
+    const onTextChange = e => {
+        setText(e.target.value)
+    }
+
     return (
         <div className="header">
             <div className="inputs">
                 <ThemeProvider theme={darkTheme}>
-                    <MicIcon className="mic" onClick={() => { sttFromMic() }} />
-                    <h1 className="select">
-                        Parler pour obtenir votre texte.
-                    </h1>
+                    <Grid container spacing={3}>
+                        <Grid item xs={3}>
+                            <MicIcon className="mic" onClick={() => { sttFromMic() }} />
+                        </Grid>
+                        <Grid item xs={3}>
+                            <h3 className="select">
+                                Parler pour obtenir votre texte.
+                            </h3>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <h3 className="select">
+                                Ou écrire pour obtenir votre texte.
+                            </h3>
+                            <Input className="select" color={"primary"} onChange={(e) => { onTextChange(e) }} />
+                        </Grid>
+                    </Grid>
+
+                    <br></br>
+
                 </ThemeProvider>
             </div>
         </div>

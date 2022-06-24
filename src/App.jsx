@@ -8,7 +8,8 @@ import Analytics from './components/Analytics/Analytics'
 
 
 function App() {
-  const [text, setText] = useState("J'ai de la fiévre et des maux de tếte, je dois prendre Paracétamol.")
+  // J'ai de la fiévre et des maux de tếte, je dois prendre Paracétamol.
+  const [text, setText] = useState("")
   const [language, setLanguage] = useState("fr-FR")
   const [lightMode, setLightMode] = useState(false)
 
@@ -46,6 +47,7 @@ function App() {
         <Header
           language={language}
           setText={setText}
+          text={text}
           lightMode={lightMode}
         />
         <Analytics text={text} lightMode={lightMode} />
