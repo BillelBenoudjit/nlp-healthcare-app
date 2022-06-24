@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-import { entityRecognition, summarization_example } from '../../modules/textAnalytics'
+import { entityRecognition, summarization_example, healthExample } from '../../modules/textAnalytics'
 
 import Highlighter from "react-highlight-words";
 
@@ -24,6 +24,41 @@ const Analytics = ({ text, lightMode }) => {
         process.env.REACT_APP_LANGUAGE_ENDPOINT,
         new AzureKeyCredential(process.env.REACT_APP_LANGUAGE_KEY))
 
+    const linked_entities = async (client) => {
+        const documents = [
+            "Microsoft a été fondée par Bill Gates et Paul Allen.",
+            "L'île de Pâques, territoire chilien, est une île volcanique isolée de Polynésie.",
+            "J'utilise Azure Functions pour développer mon produit."
+        ];
+
+        const results = await client.recognizeLinkedEntities(documents, "en");
+
+        for (const result of results) {
+            if (result.error === undefined) {
+                // console.log(" -- Recognized linked entities for input", result.id, "--");
+                for (const entity of result.entities) {
+                    // console.log(entity.name, "(URL:", entity.url, ", Source:", entity.dataSource, ")");
+                    for (const match of entity.matches) {
+                        // console.log(
+                        //     "  Occurrence:",
+                        //     '"' + match.text + '"',
+                        //     "(Score:",
+                        //     match.confidenceScore,
+                        //     ")"
+                        // );
+                    }
+                }
+            } else {
+                console.error("Encountered an error:", result.error);
+            }
+        }
+    }
+
+    linked_entities(textAnalyticsClient).catch((err) => {
+        console.error("The Linked Entities encountered an error:", err)
+    })
+
+
     // healthExample(textAnalyticsClient).catch((err) => {
     //     console.error("The sample encountered an error:", err)
     // })
@@ -33,6 +68,9 @@ const Analytics = ({ text, lightMode }) => {
     // });
 
     useEffect(async () => {
+        setTextAnalytics([])
+        setTextEntities([])
+        setData([])
         let wrap = await entityRecognition(textAnalyticsClient, text)
         if (wrap) {
             setTextAnalytics(wrap.entityResults)
@@ -69,7 +107,7 @@ const Analytics = ({ text, lightMode }) => {
                         <>
                             <h3 className="select">
                                 Named Entity Recognition
-                </h3>
+                            </h3>
                             <TableContainer
                                 component={Paper}
                                 style={{
@@ -114,7 +152,7 @@ const Analytics = ({ text, lightMode }) => {
                     <>
                         <h3 className="select">
                             Key phrases Extraction
-                    </h3>
+                        </h3>
                         <div
                             className="singleMean"
                             style={{

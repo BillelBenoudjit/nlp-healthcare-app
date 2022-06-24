@@ -60,7 +60,7 @@ export const summarization_example = async (client, text) => {
 
     documents.push(text)
 
-    console.log("== Analyze Sample For Extract Summary ==");
+    // console.log("== Analyze Sample For Extract Summary ==");
 
     // const actions = {
     //     extractSummaryActions: [{ modelVersion: "latest", orderBy: "Rank", maxSentenceCount: 5 }],
@@ -78,16 +78,16 @@ export const summarization_example = async (client, text) => {
     })
 
     poller.onProgress(() => {
-        console.log(
-            `Number of actions still in progress: ${poller.getOperationState().actionsInProgressCount}`
-        );
+        // console.log(
+        //     `Number of actions still in progress: ${poller.getOperationState().actionsInProgressCount}`
+        // );
     });
 
-    console.log(`The analyze actions operation created on ${poller.getOperationState().createdOn}`);
+    // console.log(`The analyze actions operation created on ${poller.getOperationState().createdOn}`);
 
-    console.log(
-        `The analyze actions operation results will expire on ${poller.getOperationState().expiresOn}`
-    );
+    // console.log(
+    //     `The analyze actions operation results will expire on ${poller.getOperationState().expiresOn}`
+    // );
 
     const resultPages = await poller.pollUntilDone();
 
