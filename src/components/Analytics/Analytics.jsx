@@ -166,7 +166,7 @@ const Analytics = ({ text, lightMode }) => {
                                 {
                                     data.map((word) => {
                                         return (
-                                            <li styles={{ fontWeight: 'bold' }}>{word}</li>
+                                            <li styles={{ color: "black", fontWeight: 'bold' }}>{word}</li>
                                         )
                                     })
                                 }
