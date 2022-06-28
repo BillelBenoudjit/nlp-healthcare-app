@@ -106,7 +106,7 @@ const Analytics = ({ text, lightMode }) => {
                     {text ?
                         <>
                             <h3 className="select">
-                                Named Entity Recognition
+                                Reconnaissance d'entités nommées
                             </h3>
                             <TableContainer
                                 component={Paper}
@@ -151,7 +151,7 @@ const Analytics = ({ text, lightMode }) => {
                 {text ?
                     <>
                         <h3 className="select">
-                            Key phrases Extraction
+                            Extraction d'expressions clés
                         </h3>
                         {data.length == 0 ?
                             <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
@@ -166,7 +166,7 @@ const Analytics = ({ text, lightMode }) => {
                                 {
                                     data.map((word) => {
                                         return (
-                                            <li styles={{ color: "black", fontWeight: 'bold' }}>{word}</li>
+                                            <b styles={{ color: "black", fontWeight: 'bold' }}>{word}</b>
                                         )
                                     })
                                 }
