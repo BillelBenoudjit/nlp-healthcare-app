@@ -6,6 +6,8 @@ import Input from '@mui/material/Input';
 import { SpeechConfig, AudioConfig, SpeechRecognizer, ResultReason } from 'microsoft-cognitiveservices-speech-sdk'
 import './Header.css'
 
+import logo from "./../../assets/azure.png"
+
 const Header = ({ language, setText, text, lightMode }) => {
     const darkTheme = createTheme({
         palette: {
@@ -46,11 +48,13 @@ const Header = ({ language, setText, text, lightMode }) => {
             <div className="inputs">
                 <ThemeProvider theme={darkTheme}>
                     <Grid container spacing={3}>
-                        {/* <Grid item xs={2}>
+                        <Grid item xs={2}>
                             <img src={
-                                require("./../../assets/azure.png")
-                            } />
-                        </Grid> */}
+                                logo
+                            } style={{
+                                height: "100px",
+                            }} />
+                        </Grid>
                         <Grid item xs={3}>
                             <MicIcon className="mic" onClick={() => { sttFromMic() }} />
                         </Grid>
@@ -59,7 +63,7 @@ const Header = ({ language, setText, text, lightMode }) => {
                                 Parler pour obtenir votre texte.
                             </h3>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={4}>
                             <h3 className="select">
                                 Ou écrire pour obtenir votre texte.
                             </h3>
