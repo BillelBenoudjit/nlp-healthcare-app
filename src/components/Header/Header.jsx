@@ -46,6 +46,11 @@ const Header = ({ language, setText, text, lightMode }) => {
             <div className="inputs">
                 <ThemeProvider theme={darkTheme}>
                     <Grid container spacing={3}>
+                        {/* <Grid item xs={2}>
+                            <img src={
+                                require("./../../assets/azure.png")
+                            } />
+                        </Grid> */}
                         <Grid item xs={3}>
                             <MicIcon className="mic" onClick={() => { sttFromMic() }} />
                         </Grid>
@@ -58,7 +63,12 @@ const Header = ({ language, setText, text, lightMode }) => {
                             <h3 className="select">
                                 Ou écrire pour obtenir votre texte.
                             </h3>
-                            <Input className="select" color={"primary"} onChange={(e) => { onTextChange(e) }} />
+                            <Input className="select"
+                                multiline
+                                maxRows={4}
+                                color={"primary"}
+                                onChange={(e) => { onTextChange(e) }}
+                            />
                         </Grid>
                     </Grid>
 
