@@ -28,31 +28,31 @@ function App() {
   })(Switch);
 
   return (
-    <div
-      className="App"
-      style={{
-        backgroundColor: lightMode ? "#fff" : "#282c34",
-        color: lightMode ? "#000" : "#fff",
-        transition: "all 0.5s linear"
-      }}
+    // <div
+    //   className="App"
+    //   style={{
+    //     backgroundColor: lightMode ? "#fff" : "#282c34",
+    //     color: lightMode ? "#000" : "#fff",
+    //     transition: "all 0.5s linear"
+    //   }}
+    // >
+    <Container
+      maxWidth='md'
+      style={{ display: "flex", flexDirection: "column", height: "100vh", justifyContent: "space-evenly" }}
     >
-      <Container
-        maxWidth='md'
-        style={{ display: "flex", flexDirection: "column", height: "100vh", justifyContent: "space-evenly" }}
-      >
-        <div style={{ position: "absolute", top: "0", right: "15px", paddingTop: "10" }}>
-          <span>{lightMode ? "Dark" : "Light"} Mode</span>
-          <ThemeSwitch checked={lightMode} onChange={() => setLightMode(!lightMode)} />
-        </div>
-        <Header
-          language={language}
-          setText={setText}
-          text={text}
-          lightMode={lightMode}
-        />
-        <Analytics text={text} lightMode={lightMode} />
-      </Container>
-    </div >
+      {/* <div style={{ position: "absolute", top: "0", right: "15px", paddingTop: "10" }}>
+        <span>{lightMode ? "Dark" : "Light"} Mode</span>
+        <ThemeSwitch checked={lightMode} onChange={() => setLightMode(!lightMode)} />
+      </div> */}
+      <Header
+        language={language}
+        setText={setText}
+        text={text}
+        lightMode={lightMode}
+      />
+      <Analytics text={text} lightMode={lightMode} />
+    </Container>
+    // </div >
   );
 }
 
